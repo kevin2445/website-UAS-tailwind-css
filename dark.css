@@ -1,0 +1,175 @@
+.top-bar-text {
+                font-size: 0.75rem; /* text-xs */
+            }
+            .date-time-button {
+                padding-left: 0.5rem; /* px-1 */
+                padding-right: 0.5rem; /* px-1 */
+                font-size: 0.75rem; /* text-xs */
+            }
+            .social-media-icon {
+                height: 0.75rem; /* h-3 */
+            }
+            .welcome-text {
+                font-size: 0.875rem; /* text-sm */
+            }
+            .whatsapp-info {
+                font-size: 0.875rem; /* text-sm */
+            }
+            .store-title {
+                font-size: 1.75rem; /* text-3xl */
+            }
+            .nav-button {
+                font-size: 1rem; /* text-base */
+                padding: 0.5rem; /* p-2 */
+            }
+            .hero-title {
+                font-size: 2.25rem; /* text-4xl */
+            }
+            .hero-subtitle {
+                font-size: 1rem; /* text-base */
+            }
+            .feature-item {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+        }
+        /* Style untuk badge keranjang */
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.7em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 18px; /* Ensure it's circular even for single digits */
+            height: 18px;
+        }
+
+        /* Dark mode specific styles */
+        html.dark {
+            background-color: #1a202c; /* Dark background for the entire page */
+            color: #e2e8f0; /* Light text color for dark mode */
+        }
+
+        html.dark .bg-black {
+            background-color: #0a0a0a !important; /* Even darker for top bar */
+        }
+
+        html.dark .text-white {
+            color: #e2e8f0 !important;
+        }
+
+        html.dark .text-gray-500 {
+            color: #a0aec0 !important;
+        }
+
+        html.dark .border-white {
+            border-color: #4a5568 !important;
+        }
+
+        html.dark .main-content {
+            background-color: #2d3748 !important; /* Darker background for main content area */
+            border-color: #4a5568 !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.25) !important; /* Darker shadow */
+        }
+
+        html.dark .text-black {
+            color: #e2e8f0 !important;
+        }
+
+        html.dark .opacity-70 {
+            opacity: 0.9 !important; /* Make icons slightly more visible */
+        }
+
+        html.dark .nav-button {
+            color: #6ee7b7 !important; /* Lighter green for nav buttons */
+        }
+        html.dark .nav-button:hover {
+            color: #34d399 !important; /* Slightly darker hover */
+            text-shadow: 0 0 5px #34d399, 0 0 10px #34d399, 0 0 15px #34d399; /* Adjust neon glow for dark mode */
+        }
+
+        html.dark .bg-white {
+            background-color: #2d3748 !important;
+            color: #e2e8f0 !important;
+        }
+
+        html.dark .text-gray-800 {
+            color: #e2e8f0 !important;
+        }
+
+        html.dark .shadow-lg {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.25) !important;
+        }
+
+        html.dark .text-secondary {
+            color: #a0aec0 !important; /* Lighter secondary text */
+        }
+
+        html.dark .card {
+            background-color: #4a5568 !important; /* Darker card background */
+            color: #e2e8f0 !important;
+        }
+
+        html.dark .card-title {
+            color: #e2e8f0 !important;
+        }
+
+        html.dark .btn-primary {
+            background-color: #4299e1 !important; /* A blue that stands out in dark mode */
+            border-color: #4299e1 !important;
+            color: #ffffff !important;
+        }
+        html.dark .btn-primary:hover {
+            background-color: #3182ce !important;
+            border-color: #3182ce !important;
+        }
+
+        html.dark footer {
+            background-color: #1a202c !important;
+            color: #e2e8f0 !important;
+        }
+
+        html.dark footer .text-gray-700 {
+            color: #e2e8f0 !important;
+        }
+
+        html.dark footer .text-gray-900 {
+            color: #e2e8f0 !important;
+        }
+
+        html.dark footer .text-gray-500 {
+            color: #a0aec0 !important;
+        }
+
+        html.dark footer .bg-gray-300 {
+            background-color: #2d3748 !important;
+        }
+
+        /* Hero section specific adjustments for dark mode if background image doesn't adapt well */
+        html.dark .hero-title {
+            color: #6ee7b7 !important; /* Lighter green for title */
+        }
+        html.dark .hero-subtitle {
+            color: #a0aec0 !important; /* Lighter text for subtitle */
+        }
+        html.dark .border-blue-200 {
+            border-color: #4299e1 !important; /* Darker blue border */
+        }
+        html.dark .bg-blue-200 {
+            background-color: #4299e1 !important; /* Adjust button color */
+            color: #1a202c !important; /* Dark text on button */
+        }
+        html.dark .hover:bg-blue-300:hover {
+            background-color: #3182ce !important;
+        }
+
+        html.dark .shadow-green-400\/40:hover {
+             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.7), 0 4px 6px -2px rgba(0, 0, 0, 0.35) !important;
+        }

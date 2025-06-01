@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #background {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+    }
+
+    /* Spline container was removed as it's not present in your current HTML */
+    /* .spline-container {
+      width: 100%;
+      height: 200px;
+      margin-bottom: 1rem;
+      border-radius: 0.75rem;
+      overflow: hidden;
+    } */
+
+    .custom-shadow {
+      box-shadow: 4px 4px 12px rgba(0, 128, 0, 0.5); /* Hanya kanan & bawah */
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center text-green-700 font-sans p-4">
+
+  <div id="background"></div>
+
+  <div class="bg-gray-100 bg-opacity-90 backdrop-blur-xl rounded-xl p-6 sm:p-10 w-full max-w-sm relative z-10 custom-shadow mx-auto">
+    
+    <img src="./logo/assets/prikitiw.gif" alt="GIF" class="rounded-lg mb-4 mx-auto w-32 sm:w-48 h-auto" />
+
+    <p class="text-center text-sm text-green-500 mb-4" id="currentDate"></p>
+
+    <h2 class="text-center text-3xl font-semibold mb-6 tracking-wide">Login</h2>
+    <form id="loginForm" class="space-y-6">
+      <div>
+        <label for="username" class="block mb-2 font-semibold text-sm tracking-wide text-green-600">Username</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter your username"
+          autocomplete="off"
+          required
+          class="w-full px-4 py-3 rounded-lg bg-white text-green-900 placeholder-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+      </div>
+      <div>
+        <label for="password" class="block mb-2 font-semibold text-sm tracking-wide text-green-600">Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          autocomplete="off"
+          required
+          class="w-full px-4 py-3 rounded-lg bg-white  text-green-900 placeholder-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
+      </div>
+      <button
+        type="submit"
+        class="w-full bg-green-500 hover:bg-green-600 transition-colors font-semibold py-3 rounded-lg tracking-wide shadow-md shadow-green-700/50 text-white"
+      >
+        Submit
+      </button>
+    </form>
+    <p id="message" class="mt-6 text-center font-semibold text-sm text-green-500"></p>
+  </div>
+
+  <script>
+    // Vanta.js setup
+    VANTA.NET({
+      el: "#background",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.0,
+      scaleMobile: 1.0,
+      color: 0x006400,          // Green network
+      backgroundColor: 0xffffff, // White background
+      points: 12.00,
+      maxDistance: 20.00,
+      spacing: 16.00
+    });
+
+    // Tanggal otomatis
+    document.addEventListener("DOMContentLoaded", () => {
+      const dateElement = document.getElementById("currentDate");
+      dateElement.textContent = new Date().toLocaleDateString("id-ID", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
+    });
+  </script>
+
+  <script src="Login.js"></script>
+</body>
+</html>

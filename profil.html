@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profile Web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Enable dark mode with a 'dark' class
+            theme: {
+                extend: {
+                    keyframes: {
+                        fadeIn: {
+                            'from': { opacity: '0', transform: 'translateY(20px)' },
+                            'to': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    },
+                    animation: {
+                        fadeIn: 'fadeIn 0.6s ease-out forwards',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 text-gray-800 transition-colors duration-300">
+
+    <div class="min-h-screen flex flex-col lg:flex-row">
+
+        <aside class="bg-white shadow-lg lg:w-64 w-full p-6 space-y-6 transition-colors duration-300
+                      dark:bg-gray-800 dark:text-gray-100">
+            <div class="text-center">
+                <img id="profile-picture" src="./logo/assets/prikitiw.gif" class= "w-24 h-24 mx-auto rounded-full border-4 border-blue-500 mb-2 object-cover" alt="Profile"/>
+                <h2 id="profile-name" class="font-bold text-xl text-blue-700 dark:text-blue-400">Fatimah Aurel</h2>
+                <p class="text-sm text-gray-500 dark:text-gray-400">UI UX Designer</p>
+                <div class="mt-2 text-xs text-gray-400 dark:text-gray-500">
+                    Jakarta, Indonesia<br/>
+                    <span class="text-blue-600 font-semibold dark:text-blue-300">2653</span> Task Completed
+                </div>
+            </div>
+
+            <nav class="space-y-3 text-sm">
+                <a href="#" class="flex items-center p-2 rounded-md hover:bg-blue-100 transition
+                                  dark:hover:bg-gray-700 active-link" data-content="my-profile">
+                    <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a6 6 0 0 1 6 6v3a4 4 0 0 1-8 0V8a6 6 0 0 1 2-6z"/></svg>
+                    My Profile
+                </a>
+                <a href="#" class="flex items-center p-2 rounded-md hover:bg-blue-100 transition
+                                  dark:hover:bg-gray-700" data-content="statistic">
+                    <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20"><path d="M2 11a1 1 0 0 0 1 1h3V8H3a1 1 0 0 0-1 1v2zm5 1h3V6H7v6zm4 0h3V3h-3v9zm4 0h3a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-3v6z"/></svg>
+                    Statistic
+                </a>
+                <a href="#" class="flex items-center p-2 rounded-md hover:bg-blue-100 transition
+                                  dark:hover:bg-gray-700" data-content="location">
+                    <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm1 12h-2v-2h2v2zm0-4h-2V6h2v4z"/></svg>
+                    Location
+                </a>
+                <a href="#" class="flex items-center p-2 rounded-md hover:bg-blue-100 transition bg-blue-100 font-medium text-blue-700
+                                  dark:bg-gray-700 dark:text-blue-300 dark:hover:bg-gray-600" data-content="settings">
+                    <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4h12v2H4V4zm0 4h12v2H4V8zm0 4h12v2H4v-2z"/></svg>
+                    Settings
+                </a>
+                <a href="./Login_Ujian.html" class="flex items-center p-2 rounded-md hover:bg-red-100 transition
+                                                    dark:hover:bg-red-900">
+                    <svg class="w-5 h-5 text-red-500 mr-3" fill="currentColor" viewBox="0 0 20 20"><path d="M3 4a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H5v12h10V5h-3a1 1 0 1 1 0-2h3a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/></svg>
+                    Logout
+                </a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 p-8 relative transition-colors duration-300
+                     dark:text-gray-100">
+            <h1 id="main-title" class="text-3xl font-semibold text-blue-800 mb-4 animate-fadeIn dark:text-blue-400">Welcome back, Fatimah!</h1>
+            <p id="main-description" class="text-gray-600 leading-relaxed animate-fadeIn dark:text-gray-400">This is your dashboard area. Here you could add components like charts, activity feed, messages, etc. If you want to expand this template into a full admin panel, just ask!</p>
+
+            <div id="content-my-profile" class="mt-6 animate-fadeIn content-section">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white p-6 rounded-lg shadow-md transition-colors duration-300 dark:bg-gray-700 dark:text-gray-100">
+                        <h2 class="text-lg font-bold mb-2">Profile Summary</h2>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">Fatimah has completed 2653 tasks and specializes in user interface and user experience design. Based in Jakarta.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md transition-colors duration-300 dark:bg-gray-700 dark:text-gray-100">
+                        <h2 class="text-lg font-bold mb-2">Latest Activity</h2>
+                        <ul class="text-sm list-disc list-inside text-gray-700 dark:text-gray-300">
+                            <li>Completed "Landing Page Redesign"</li>
+                            <li>Shared new UI prototype</li>
+                            <li>Updated location info</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-statistic" class="mt-6 animate-fadeIn content-section hidden">
+                <div class="bg-white p-6 rounded-lg shadow-md transition-colors duration-300 dark:bg-gray-700 dark:text-gray-100">
+                    <h2 class="text-lg font-bold mb-2 text-blue-700 dark:text-blue-400">Your Statistics</h2>
+                    <p class="text-gray-600 dark:text-gray-300">Here you can see detailed statistics about your tasks and progress.</p>
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-blue-50 p-4 rounded-lg text-center dark:bg-blue-900 dark:text-blue-100">
+                            <h3 class="text-3xl font-bold text-blue-600 dark:text-blue-300">2653</h3>
+                            <p class="text-sm text-gray-600 dark:text-blue-200">Tasks Completed</p>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-lg text-center dark:bg-green-900 dark:text-green-100">
+                            <h3 class="text-3xl font-bold text-green-600 dark:text-green-300">95%</h3>
+                            <p class="text-sm text-gray-600 dark:text-green-200">Completion Rate</p>
+                        </div>
+                        <div class="bg-yellow-50 p-4 rounded-lg text-center dark:bg-yellow-900 dark:text-yellow-100">
+                            <h3 class="text-3xl font-bold text-yellow-600 dark:text-yellow-300">12</h3>
+                            <p class="text-sm text-gray-600 dark:text-yellow-200">Projects Active</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-location" class="mt-6 animate-fadeIn content-section hidden">
+                <div class="bg-white p-6 rounded-lg shadow-md transition-colors duration-300 dark:bg-gray-700 dark:text-gray-100">
+                    <h2 class="text-lg font-bold mb-2 text-blue-700 dark:text-blue-400">Your Location</h2>
+                    <p class="text-gray-600 dark:text-gray-300">Here's your current location. You can update it in settings.</p>
+                    <div class="mt-4">
+                        <p class="text-lg font-medium">Jakarta, Indonesia</p>
+                        <div class="bg-gray-200 h-64 mt-4 rounded-lg flex items-center justify-center text-gray-500
+                                    dark:bg-gray-600 dark:text-gray-300">
+                            Map Placeholder
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-settings" class="mt-6 animate-fadeIn content-section">
+                <div class="bg-white p-6 rounded-lg shadow-md transition-colors duration-300 dark:bg-gray-700 dark:text-gray-100">
+                    <h2 class="text-lg font-bold mb-4 text-blue-700 dark:text-blue-400">Settings</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="edit-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Change Name</label>
+                            <input type="text" id="edit-name" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm
+                                                                     dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100">
+                            <button id="save-name-btn" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">Save Name</button>
+                        </div>
+                        <div>
+                            <label for="profile-image-upload" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Change Profile Picture</label>
+                            <input type="file" id="profile-image-upload" accept="image/*" class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100
+                                                                                                 dark:file:bg-blue-900 dark:file:text-blue-100 dark:hover:file:bg-blue-800">
+                            <button id="save-profile-pic-btn" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">Upload Picture</button>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-md dark:bg-gray-800">
+                            <h3 class="text-md font-semibold text-gray-800 dark:text-gray-100">Theme Settings</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Customize the look and feel of your profile.</p>
+                            <button id="toggle-theme-btn" class="mt-2 px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 transition">Toggle Dark/Light Mode</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="interactive-character" class="fixed bottom-5 right-5 w-24 h-24 rounded-full overflow-hidden cursor-pointer transition duration-200 ease-in-out z-10
+                                            md:w-16 md:h-16 md:bottom-2.5 md:right-2.5 hover:scale-110">
+            <img src="./logo/assets/prikitiw.gif" alt="Interactive Character" class="w-full h-full object-cover">
+        </div>
+        <div id="speech-bubble" class="absolute bottom-[130px] right-5 bg-blue-500 text-white p-3 rounded-xl max-w-xs text-center opacity-0 transition duration-300 ease-in-out text-sm shadow-md
+                                       md:bottom-[90px] md:right-2.5 md:max-w-[150px] md:text-xs">
+            Halo! Ada yang bisa kubantu? Klik aku untuk melihat lebih banyak.
+            <div class="absolute left-1/2 -bottom-2.5 w-0 h-0 border-l-[10px] border-r-[10px] border-t-[10px] border-l-transparent border-r-transparent border-t-blue-500 -translate-x-1/2"></div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const profileName = document.getElementById('profile-name');
+            const profilePicture = document.getElementById('profile-picture');
+            const editNameInput = document.getElementById('edit-name');
+            const saveNameBtn = document.getElementById('save-name-btn');
+            const profileImageUpload = document.getElementById('profile-image-upload');
+            const saveProfilePicBtn = document.getElementById('save-profile-pic-btn');
+            const mainTitle = document.getElementById('main-title');
+            const mainDescription = document.getElementById('main-description');
+            const navLinks = document.querySelectorAll('nav a');
+            const contentSections = document.querySelectorAll('.content-section');
+            const interactiveCharacter = document.getElementById('interactive-character');
+            const speechBubble = document.getElementById('speech-bubble');
+            const toggleThemeBtn = document.getElementById('toggle-theme-btn');
+
+            // Load saved data
+            const savedName = localStorage.getItem('profileName');
+            const savedProfilePic = localStorage.getItem('profilePicture');
+            const savedTheme = localStorage.getItem('theme');
+
+            if (savedName) {
+                profileName.textContent = savedName;
+                editNameInput.value = savedName;
+                mainTitle.textContent = `Welcome back, ${savedName.split(' ')[0]}!`;
+            }
+            if (savedProfilePic) {
+                profilePicture.src = savedProfilePic;
+            }
+
+            // Apply saved theme
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark'); // Add 'dark' class to html element
+            }
+
+            // Save Name
+            saveNameBtn.addEventListener('click', () => {
+                const newName = editNameInput.value.trim();
+                if (newName) {
+                    profileName.textContent = newName;
+                    mainTitle.textContent = `Welcome back, ${newName.split(' ')[0]}!`;
+                    localStorage.setItem('profileName', newName);
+                    alert('Nama berhasil diubah!');
+                } else {
+                    alert('Nama tidak boleh kosong!');
+                }
+            });
+
+            // Change Profile Picture
+            profileImageUpload.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        profilePicture.src = e.target.result;
+                        localStorage.setItem('profilePicture', e.target.result);
+                        alert('Gambar profil berhasil diubah!');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Navigation handler
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    navLinks.forEach(nav => {
+                        nav.classList.remove('active-link', 'bg-blue-100', 'font-medium', 'text-blue-700', 'dark:bg-gray-700', 'dark:text-blue-300', 'dark:hover:bg-gray-600');
+                        // Add hover state back if it's not the active link
+                        nav.classList.add('hover:bg-blue-100', 'dark:hover:bg-gray-700');
+                    });
+
+                    link.classList.add('active-link', 'bg-blue-100', 'font-medium', 'text-blue-700', 'dark:bg-gray-700', 'dark:text-blue-300');
+                    link.classList.remove('hover:bg-blue-100', 'dark:hover:bg-gray-700'); // Remove hover for active link
+
+                    const targetContentId = link.dataset.content;
+
+                    contentSections.forEach(section => {
+                        section.classList.add('hidden');
+                        section.classList.remove('animate-fadeIn'); // Remove animation class before showing
+                    });
+
+                    const targetSection = document.getElementById(`content-${targetContentId}`);
+                    if (targetSection) {
+                        targetSection.classList.remove('hidden');
+                        targetSection.classList.add('animate-fadeIn'); // Add animation class
+
+                        // Update main title and description based on selected menu
+                        let titleText = '';
+                        let descriptionText = '';
+
+                        switch (targetContentId) {
+                            case 'my-profile':
+                                titleText = `Welcome back, ${profileName.textContent.split(' ')[0]}!`;
+                                descriptionText = 'This is your dashboard area. Here you could add components like charts, activity feed, messages, etc. If you want to expand this template into a full admin panel, just ask!';
+                                break;
+                            case 'statistic':
+                                titleText = 'Your Performance Statistics';
+                                descriptionText = 'Dive into your progress and see how well you are doing with your tasks and projects.';
+                                break;
+                            case 'location':
+                                titleText = 'Your Current Location';
+                                descriptionText = 'View and manage your geographical information.';
+                                break;
+                            case 'settings':
+                                titleText = 'Profile Settings';
+                                descriptionText = 'Manage your profile information, preferences, and account settings.';
+                                break;
+                            default:
+                                titleText = `Welcome back, ${profileName.textContent.split(' ')[0]}!`;
+                                descriptionText = 'This is your dashboard area. Here you could add components like charts, activity feed, messages, etc. If you want to expand this template into a full admin panel, just ask!';
+                                break;
+                        }
+                        mainTitle.textContent = titleText;
+                        mainDescription.textContent = descriptionText;
+                    }
+                });
+            });
+
+            // Initial active link and content display
+            document.querySelector('[data-content="my-profile"]').click();
+
+
+            // Interactive Character & Speech Bubble
+            let speechBubbleTimeout;
+            const messages = [
+                "Halo! Ada yang bisa kubantu?",
+                "Senang bertemu denganmu!",
+                "Jelajahi profilmu!",
+                "Klik aku untuk tips lebih lanjut!",
+                "Semoga harimu menyenangkan!"
+            ];
+            let messageIndex = 0;
+
+            function showSpeechBubble(message) {
+                speechBubble.textContent = message;
+                speechBubble.classList.add('opacity-100');
+                clearTimeout(speechBubbleTimeout);
+                speechBubbleTimeout = setTimeout(() => {
+                    speechBubble.classList.remove('opacity-100');
+                }, 5000); // Pesan akan hilang setelah 5 detik
+            }
+
+            // Tampilkan pesan pertama saat halaman dimuat
+            showSpeechBubble(messages[messageIndex]);
+
+            // Ganti pesan setiap kali diklik
+            interactiveCharacter.addEventListener('click', () => {
+                messageIndex = (messageIndex + 1) % messages.length;
+                showSpeechBubble(messages[messageIndex]);
+            });
+
+            // Toggle Dark/Light Mode
+            toggleThemeBtn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                if (document.documentElement.classList.contains('dark')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

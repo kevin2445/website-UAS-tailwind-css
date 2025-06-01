@@ -1,0 +1,198 @@
+<!doctype html>
+<html class="m-0 p-0">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./products.js"></script>
+
+    <title>Keranjang Belanja</title>
+    <style>
+        /* Anda bisa menambahkan CSS kustom di sini jika diperlukan */
+        .qris-modal {
+            display: none; /* Hidden by default */
+        }
+        .qris-modal.flex { /* Override display: none when flex class is added by JS */
+            display: flex;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-inter">
+    <header class="bg-white shadow py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <a href="./lks2025.html" class="text-gray-600 hover:text-gray-800 transition duration-200" title="Kembali ke Menu Awal">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                </a>
+                <a href="./lks2025.html" class="text-2xl font-bold text-gray-800">XPLOITSTORE</a>
+            </div>
+
+            <h1 class="text-xl font-semibold hidden sm:block">Keranjang Belanja Anda</h1>
+
+            <div class="flex items-center">
+                <a href="profile.html" class="text-gray-600 hover:text-gray-800 transition duration-300" title="Profil Pengguna">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0A8.966 8.966 0 0112 20.25a8.966 8.966 0 01-5.982-2.525M12 12.75a3 3 0 100-6 3 3 0 000 6z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div id="cart-items-container" class="bg-white p-6 rounded-lg shadow-md">
+            <p id="empty-cart-message" class="text-gray-500 text-center hidden">Keranjang Anda kosong.</p>
+        </div>
+
+        <div id="cart-summary" class="bg-white p-6 rounded-lg shadow-md mt-6 hidden">
+            <div class="border-t-2 border-gray-200 pt-4 mt-8 text-xl font-bold flex justify-between items-center">
+                <span>Total:</span>
+                <span id="cart-total-price">Rp 0</span>
+            </div>
+            <button id="checkout-button" class="mt-4 w-full bg-green-500 text-white py-3 rounded-md hover:bg-green-600 transition duration-300">Checkout Sekarang</button>
+        </div>
+    </main>
+
+    <footer class="w-full text-gray-700 bg-gray-100 body-font mt-8 py-6 text-center">
+        <div class="container px-5 py-4 mx-auto">
+            <p class="md:text-sm text-[7px] text-gray-700 capitalize text-center">© 2024 Team IT SMK Jakarta Pusat 1 All rights reserved </p>
+        </div>
+    </footer>
+
+    <div id="qrisModal" class="qris-modal fixed inset-0 z-50 bg-black bg-opacity-40 items-center justify-center">
+        <div class="bg-white p-5 rounded-lg shadow-xl w-11/12 max-w-sm relative text-center">
+            <span class="absolute top-2 right-4 text-gray-500 text-3xl font-bold cursor-pointer hover:text-gray-800" id="closeQrisModal">&times;</span>
+            <h2 class="text-2xl font-bold mb-4">Scan QRIS untuk Pembayaran</h2>
+            <p class="text-gray-700 mb-4">Silakan scan QRIS di bawah ini menggunakan aplikasi pembayaran Anda.</p>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=00020101021126670016COM.NOBUBANK.WWW01189360050300000879140214502301600754530303UMI51440014ID.CO.QRIS.WWW0215ID20253900610700303UMI5204541153033605802ID5921XPLOITSTORE OK23491896013JAKARTA PUSAT61051011062070703A0163042D35" alt="QRIS Code" class="w-full max-w-xs h-auto mx-auto my-4 block">
+            <p class="text-sm text-gray-500">Merchant Code: OK2349189</p>
+            <p class="text-sm text-gray-500">Nama Merchant: XPLOITSTORE</p>
+            <p class="text-sm text-gray-500">Pastikan jumlah yang dibayarkan sesuai dengan total belanja Anda.</p>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi untuk memformat angka menjadi format Rupiah
+        function formatRupiah(amount) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(amount);
+        }
+
+        // Fungsi untuk menyimpan keranjang ke local storage
+        function saveCart(cart) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Fungsi untuk mendapatkan keranjang dari local storage
+        function getCart() {
+            return JSON.parse(localStorage.getItem('cart')) || [];
+        }
+
+        // Fungsi untuk merender (menampilkan) item di keranjang
+        function renderCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items-container');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            const cartSummary = document.getElementById('cart-summary');
+            let cart = getCart();
+            let totalPrice = 0;
+
+            // Bersihkan semua item keranjang yang dirender sebelumnya, tapi pertahankan empty-cart-message
+            const existingEmptyMessage = document.getElementById('empty-cart-message');
+            cartItemsContainer.innerHTML = '';
+            cartItemsContainer.appendChild(existingEmptyMessage);
+
+            if (cart.length === 0) {
+                // Jika keranjang kosong
+                emptyCartMessage.classList.remove('hidden');
+                cartSummary.classList.add('hidden');
+                document.getElementById('cart-total-price').innerText = formatRupiah(0);
+            } else {
+                // Jika keranjang tidak kosong
+                emptyCartMessage.classList.add('hidden');
+                cartSummary.classList.remove('hidden');
+
+                cart.forEach((item, index) => {
+                    totalPrice += item.price * item.quantity;
+
+                    const itemDiv = document.createElement('div');
+                    itemDiv.classList.add('flex', 'items-center', 'mb-4', 'border', 'border-gray-200', 'p-4', 'rounded-md', 'bg-white', 'flex-wrap');
+                    itemDiv.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover mr-4 rounded-md flex-shrink-0">
+                        <div class="flex-grow min-w-[150px]">
+                            <h4 class="font-semibold text-lg">${item.name}</h4>
+                            <p class="text-gray-600">${formatRupiah(item.price)} per item</p>
+                            <p class="text-gray-600">Kuantitas: ${item.quantity}</p>
+                            <p class="font-bold text-gray-800">${formatRupiah(item.price * item.quantity)}</p>
+                        </div>
+                        <div class="flex items-center gap-2 mt-2 sm:mt-0">
+                            <button class="bg-blue-500 text-white px-2 py-1 rounded-md hover:bg-blue-600 transition duration-300 remove-one-btn" data-index="${index}">-</button>
+                            <button class="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition duration-300 remove-all-btn" data-index="${index}">Hapus</button>
+                        </div>
+                    `;
+                    cartItemsContainer.insertBefore(itemDiv, emptyCartMessage.nextSibling);
+                });
+            }
+
+            document.getElementById('cart-total-price').innerText = formatRupiah(totalPrice);
+
+            document.querySelectorAll('.remove-one-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    let cart = getCart();
+                    const index = parseInt(event.target.dataset.index);
+                    if (cart[index].quantity > 1) {
+                        cart[index].quantity -= 1;
+                    } else {
+                        cart.splice(index, 1);
+                    }
+                    saveCart(cart);
+                    renderCartItems();
+                });
+            });
+
+            document.querySelectorAll('.remove-all-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    let cart = getCart();
+                    const index = parseInt(event.target.dataset.index);
+                    cart.splice(index, 1);
+                    saveCart(cart);
+                    renderCartItems();
+                });
+            });
+        }
+
+        document.getElementById('checkout-button').addEventListener('click', () => {
+            const qrisModal = document.getElementById('qrisModal');
+            qrisModal.classList.remove('hidden');
+            qrisModal.classList.add('flex');
+        });
+
+        document.getElementById('closeQrisModal').addEventListener('click', () => {
+            const qrisModal = document.getElementById('qrisModal');
+            qrisModal.classList.add('hidden');
+            qrisModal.classList.remove('flex');
+        });
+
+        window.addEventListener('click', (event) => {
+            const qrisModal = document.getElementById('qrisModal');
+            if (event.target === qrisModal) {
+                qrisModal.classList.add('hidden');
+                qrisModal.classList.remove('flex');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', renderCartItems);
+        AOS.init();
+    </script>
+    
+</body>
+</html>
